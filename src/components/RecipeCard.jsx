@@ -9,7 +9,6 @@ const RecipeCard = ({ title, img }) => {
       <Paper
         sx={{
           boxShadow: "none",
-          border: "1px solid red",
           display: "flex",
           flexDirection: "column",
           gap: "0.75rem",
