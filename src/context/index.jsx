@@ -4,6 +4,8 @@ export const GlobalContext = createContext(null);
 
 export default function GlobalState({ children }) {
   const [searchParam, setSearchParam] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [recipes, setRecipes] = useState([]);
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -13,7 +15,11 @@ export default function GlobalState({ children }) {
       );
 
       const data = await res.json();
-      console.log(data);
+      if (data?.data?.recipes) {
+        setRecipes(data?.data?.recipes);
+        setLoading(false);
+        setSearchParam("");
+      }
     } catch (err) {
       console.log(err);
     }
@@ -21,7 +27,7 @@ export default function GlobalState({ children }) {
 
   return (
     <GlobalContext.Provider
-      value={{ searchParam, setSearchParam, handleSubmit }}
+      value={{ searchParam, setSearchParam, handleSubmit, recipes, loading }}
     >
       {children}
     </GlobalContext.Provider>
