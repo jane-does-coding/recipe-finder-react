@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { GlobalContext } from "../context";
-import { Button } from "@mui/material";
+import { Button, TextField } from "@mui/material";
+import { IoIosSearch } from "react-icons/io";
 
 const Navbar = () => {
   const { searchParam, setSearchParam, handleSubmit } =
@@ -8,13 +9,19 @@ const Navbar = () => {
 
   return (
     <div>
-      <input
+      <TextField
+        variant="filled"
+        label="Search"
         type="text"
         value={searchParam}
         onChange={(e) => setSearchParam(e.target.value)}
       />
-      <Button variant="contained" disableElevation onClick={handleSubmit}>
-        Submit
+      <Button
+        sx={{ width: "fit-content", padding: "0.25rem", borderRadius: "10rem" }}
+        disableElevation
+        onClick={handleSubmit}
+      >
+        <IoIosSearch size={24} />
       </Button>
     </div>
   );
