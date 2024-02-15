@@ -4,8 +4,10 @@ import { Grid } from "@mui/material";
 import { GlobalContext } from "../context";
 
 const HomePage = () => {
-  const { recipes } = useContext(GlobalContext);
+  const { recipes, searchParam } = useContext(GlobalContext);
   console.log(recipes);
+
+  if (recipes.length < 1) return <h1>Please search up something</h1>;
 
   return (
     <div className="recipes-grid">

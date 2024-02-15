@@ -18,7 +18,6 @@ export default function GlobalState({ children }) {
       if (data?.data?.recipes) {
         setRecipes(data?.data?.recipes);
         setLoading(false);
-        setSearchParam("");
       }
     } catch (err) {
       console.log(err);
